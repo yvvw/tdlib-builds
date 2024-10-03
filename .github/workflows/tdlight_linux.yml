@@ -28,14 +28,14 @@ jobs:
           sudo apt-get upgrade -y
           sudo apt-get install -y make git zlib1g-dev libssl-dev gperf php5-cli cmake3 g++-4.9
       - name: Clone TDLight
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: tdlight-team/tdlight
           ref: ${{ github.event.inputs.commit }}
       - name: Clone OpenSSL
         if: ${{ github.event.inputs.openssl != '' }}
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: openssl/openssl
           ref: ${{ github.event.inputs.openssl }}
           path: openssl_repo
@@ -62,7 +62,7 @@ jobs:
           cd build
           cmake --build . --target install
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: TDLight
           path: tdlight

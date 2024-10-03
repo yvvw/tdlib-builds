@@ -17,8 +17,8 @@ jobs:
         run: |
           vcpkg install gperf:x64-windows openssl:x64-windows zlib:x64-windows
       - name: Clone TDLib
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: tdlib/td
           ref: ${{ github.event.inputs.commit }}
       - name: Configure
@@ -35,7 +35,7 @@ jobs:
           cmake --build . --target install --config Release
           copy Release\tg_cli.exe ..\tdlib\bin
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: TDLib
           path: tdlib

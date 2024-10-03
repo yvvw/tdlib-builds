@@ -17,8 +17,8 @@ jobs:
         run: |
           vcpkg install gperf openssl:x86-windows zlib:x86-windows
       - name: Clone TDLight
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: tdlight-team/tdlight
           ref: ${{ github.event.inputs.commit }}
       - name: Configure
@@ -33,7 +33,7 @@ jobs:
           cd build
           cmake --build . --target install --config Release
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: TDLight
           path: tdlight

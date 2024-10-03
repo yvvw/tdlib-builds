@@ -28,15 +28,15 @@ jobs:
           sudo apt-get upgrade -y
           sudo apt-get install -y make git zlib1g-dev libssl-dev gperf cmake3 clang-3.9 libc++-dev
       - name: Clone Telegram Bot API
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: tdlib/telegram-bot-api
           ref: ${{ github.event.inputs.commit }}
           submodules: recursive
       - name: Clone OpenSSL
         if: ${{ github.event.inputs.openssl != '' }}
-        uses: actions/checkout@v2
-        with: 
+        uses: actions/checkout@v4
+        with:
           repository: openssl/openssl
           ref: ${{ github.event.inputs.openssl }}
           path: openssl_repo
@@ -67,7 +67,7 @@ jobs:
       - name: Package artifact
         run: tar -caf telegram-bot-api.tar.xz tgbotapi/*
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Telegram Bot API
           path: telegram-bot-api.tar.xz
